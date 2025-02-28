@@ -1,0 +1,104 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 9%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 142 71% 45%;
+    --primary-foreground: 144 100% 99%;
+
+    --secondary: 0 0% 11%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 0 0% 11%;
+    --accent-foreground: 0 0% 95%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 14%;
+    --input: 0 0% 14%;
+    --ring: 142 71% 45%;
+
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  /* Apply dot pattern only after page is loaded */
+  html.js-loaded body {
+    background-image: radial-gradient(rgba(0, 200, 100, 0.07) 1px, transparent 0);
+    background-size: 40px 40px;
+    background-position: -19px -19px;
+  }
+}
+
+.starry-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: 
+    radial-gradient(circle at 25% 15%, rgba(0, 200, 100, 0.1) 0%, transparent 8%),
+    radial-gradient(circle at 76% 87%, rgba(0, 200, 100, 0.05) 0%, transparent 5%);
+}
+
+@layer utilities {
+  .glass {
+    @apply backdrop-blur-lg bg-black/40 border border-white/10;
+  }
+  
+  .glass-card {
+    @apply glass rounded-lg p-6 transition-all duration-300 hover:bg-black/50;
+  }
+
+  .neo-blur {
+    @apply backdrop-blur-xl bg-black/60 border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)];
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent;
+  }
+  
+  .green-glow {
+    box-shadow: 0 0 15px rgba(0, 255, 128, 0.1), 0 0 30px rgba(0, 255, 128, 0.05);
+  }
+  
+  .animate-shimmer {
+    @apply relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-shimmer before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent;
+  }
+
+  .hero-section {
+    @apply flex flex-col items-center justify-center text-center px-6 py-16 space-y-6;
+  }
+
+  .hero-title {
+    @apply text-4xl md:text-6xl font-bold tracking-tight;
+  }
+
+  .hero-subtitle {
+    @apply text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto;
+  }
+}
